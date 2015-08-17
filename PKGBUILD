@@ -1,0 +1,25 @@
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+
+pkgname=pony-of-the-day
+pkgver=1.0
+pkgrel=2
+pkgdesc="Server using Quote of the Day protocol and can send my little ponies"
+arch=('any')
+url="https://github.com/maandree/pony-of-the-day"
+license=('Public Domain')
+depends=('java-runtime>=7' 'unisay' 'pinkie-pie')
+makedepends=('java-environment>=7')
+provides=('pony-of-the-day')
+conflicts=('pony-of-the-day')
+source=(https://github.com/maandree/pony-of-the-day/tarball/v1.0)
+md5sums=(8d76ca7c1fb4871c532ea9746def1810)
+
+build() {
+  cd maandree-pony-of-the-day-85cab0a
+  make DESTDIR="$pkgdir/"
+}
+
+package() {
+  cd maandree-pony-of-the-day-85cab0a
+  make DESTDIR="$pkgdir/" install
+}
